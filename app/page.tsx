@@ -187,8 +187,9 @@ export default function Page() {
                   width={32} 
                   height={32}
                   className="mr-3 animate-bounce"
+                  style={{ animationDuration: '0.6s' }}
                 />
-                <span className="text-black">BUY $TROLLPUMP NOW</span>
+                <span className="text-black">BUY $TROLLPUMP</span>
               </div>
             </button>
           </div>
