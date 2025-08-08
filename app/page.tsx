@@ -1,0 +1,127 @@
+'use client';
+
+import Image from 'next/image';
+import dynamic from 'next/dynamic';
+import { FloatingDoseButton } from '@/components/FloatingDoseButton';
+import { useMintedCounter } from '@/hooks/useMintedCounter';
+import { useSpeedBoost } from '@/hooks/useSpeedBoost';
+import { useLaser } from '@/hooks/useLaser';
+import { useCallback, useEffect, useState } from 'react';
+import { ShareButtons } from '@/components/ShareButtons';
+import { chooseVariant, getCopy } from '@/lib/ab';
+import { track } from '@/lib/analytics';
+import { TrollReplicator } from '@/components/TrollReplicator';
+
+const MBTIGenerator = dynamic(() => import('@/components/MBTIGenerator').then(m => m.MBTIGenerator), {
+  ssr: false,
+  loading: () => <div className="mt-10 h-64 grid place-items-center text-sm">Loading MBTI generator…</div>,
+});
+
+function GeneratorPlaceholder({ intervalMs }: { intervalMs: number }) {
+  const intensity = useLaser(true);
+  return (
+    <div className="mt-10 grid place-items-center">
+      <div className="w-64 h-64 bg-white border-4 border-black shadow-[0_8px_0_#111] grid place-items-center rounded-xl sticker">
+        <div
+          style={{ opacity: intensity, filter: `blur(${2 + intensity * 6}px)` }}
+          className="text-2xl font-black"
+        >
+          LASER {Math.round(intensity * 100)}%
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Page() {
+  const minted = useMintedCounter(3000);
+  const { intervalMs, onShareSuccess } = useSpeedBoost(900);
+  const [toast, setToast] = useState<string | null>(null);
+  const variant = chooseVariant();
+  const copy = getCopy(variant);
+
+  useEffect(() => {
+    track('ab_exposure', { variant });
+  }, [variant]);
+
+  const handleGenerate = useCallback(() => {
+    track('cta_click', { variant, cta: 'generate' });
+    setToast('GENERATING...');
+    setTimeout(() => setToast(null), 1200);
+  }, [variant]);
+
+  const doseX2 = useCallback(() => {
+    track('cta_click', { variant, cta: 'dose_x2' });
+    onShareSuccess();
+    setToast('SHARED. SPEED BOOST ×2 (30s)');
+    setTimeout(() => setToast(null), 2500);
+  }, [onShareSuccess, variant]);
+
+  return (
+    <main>
+      <section className="relative bg-[#FFD400] grain">
+        <div className="mx-auto max-w-6xl px-6 py-14 md:py-20 drop-shadow-[0_16px_0_#111]">
+          <h1 className="thick-outline select-none text-4xl md:text-6xl lg:text-7xl leading-[1.15] md:leading-[1.1] lg:leading-[1.08] tracking-tight">
+            <span className="block">TAKE THE PUMP.</span>
+            <span className="block mt-2 md:mt-3">WATCH THEM GROW.</span>
+          </h1>
+          <p className="mt-6 text-lg md:text-xl lg:text-2xl font-black leading-relaxed">
+            💊 Every pill = MASSIVE troll growth. 1→2→4→8→16... Exponential FOMO incoming.
+          </p>
+          <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-3 md:gap-4">
+            <button
+              aria-label="Generate Meme"
+              onClick={handleGenerate}
+              className="rounded-xl bg-black text-white px-5 md:px-6 py-3 font-black border-4 border-black shadow-[0_8px_0_#111] active:translate-y-1"
+            >
+              🚀 PUMP GENERATOR
+            </button>
+            <button
+              onClick={doseX2}
+              className="rounded-xl bg-white px-5 md:px-6 py-3 font-black border-4 border-black shadow-[0_8px_0_#111] active:translate-y-1"
+            >
+              💊 DOSE ×2
+            </button>
+            <ShareButtons onSuccess={doseX2} />
+          </div>
+          <div className="mt-6 md:mt-8 text-sm text-black" style={{ textShadow: 'none' }}>
+            🎯 Trolls pumped today: {minted} • 🏆 Top pumpers: 🇺🇸 🇨🇳 🇯🇵
+          </div>
+                                <div className="absolute right-4 bottom-4 md:right-8 md:bottom-8">
+                        <video 
+                          src="/images/daofang.mov" 
+                          autoPlay 
+                          loop 
+                          muted 
+                          playsInline
+                          className="sticker w-[140px] h-[140px] object-cover rounded-lg"
+                          style={{ filter: 'contrast(1.05) saturate(1.1)' }}
+                        />
+                      </div>
+        </div>
+      </section>
+
+      {/* Troll 裂变系统 */}
+      <section className="mx-auto max-w-4xl px-6 py-12">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">💊 PUMP LABORATORY</h2>
+          <p className="text-lg text-gray-700 mb-2">Click the pill to witness MASSIVE troll multiplication</p>
+          <p className="text-sm text-gray-600">Each pill = Exponential growth. Watch them get BIGGER and MULTIPLY faster!</p>
+        </div>
+        <TrollReplicator />
+      </section>
+
+      <section className="mx-auto max-w-6xl px-6">
+        <MBTIGenerator />
+      </section>
+
+      <FloatingDoseButton doseX2={doseX2} />
+
+      {toast && (
+        <div aria-live="polite" className="fixed left-1/2 -translate-x-1/2 bottom-6 z-50 rounded-xl bg-black text-white px-5 py-3 font-black border-4 border-black shadow-[0_8px_0_#111]">
+          {toast}
+        </div>
+      )}
+    </main>
+  );
+}
