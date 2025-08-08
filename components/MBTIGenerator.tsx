@@ -111,17 +111,38 @@ export function MBTIGenerator() {
     img.onload = () => {
       ctx.drawImage(img, 0, 0, imgSize, imgSize);
 
-      const text = customText || `${mbtiResult} - ${mbtiConfig.name}`;
+      // 绘制 MBTI 类型文本（主要文本）
+      const mbtiText = `${mbtiResult} - ${mbtiConfig.name}`;
       ctx.font = '900 48px Impact, Arial Black, sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       
       ctx.strokeStyle = '#000';
       ctx.lineWidth = 8;
-      ctx.strokeText(text, canvas.width / 2, canvas.height * 0.85);
+      ctx.strokeText(mbtiText, canvas.width / 2, canvas.height * 0.85);
       
       ctx.fillStyle = mbtiConfig.textColor;
-      ctx.fillText(text, canvas.width / 2, canvas.height * 0.85);
+      ctx.fillText(mbtiText, canvas.width / 2, canvas.height * 0.85);
+
+      // 如果有自定义文本，作为半透明水印绘制在左上角
+      if (customText) {
+        ctx.font = 'bold 24px Impact, Arial Black, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'top';
+        
+        // 半透明效果
+        ctx.globalAlpha = 0.3;
+        
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 3;
+        ctx.strokeText(customText, 20, 20);
+        
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText(customText, 20, 20);
+        
+        // 恢复透明度
+        ctx.globalAlpha = 1.0;
+      }
 
       drawAvatarOutline(ctx, imgSize, imgSize);
     };
