@@ -80,8 +80,7 @@ export function TrollRain({ isActive, onComplete }: TrollRainProps) {
         </div>
       ))}
       
-      {/* 背景遮罩 */}
-      <div className="absolute inset-0 bg-black bg-opacity-10" />
+      {/* 移除背景遮罩，保持屏幕亮度不变 */}
     </div>
   );
 } 
