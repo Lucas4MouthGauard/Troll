@@ -12,19 +12,11 @@ export function ShareButtons({ onSuccess }: { onSuccess: () => void }) {
 
   const shareNative = async () => {
     track('share_clicked', { placement: 'hero', platform: 'webshare' });
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: 'troll', text: 'Take the pill. Make them cope.', url });
-        success('webshare');
-      } catch {}
-    } else {
-      // 如果没有原生分享，跳转到发布推文页面
-      const text = encodeURIComponent('💊 Take the Pill. Make them Cope. 🚀\n\n🔥 Trolls getting MASSIVE & MULTIPLYING!\n💊 PUMP LABORATORY: Watch viral spread\n🎭 MBTI MEME GENERATOR: Create your personality\n\nJoin the TROLL REVOLUTION! @troll_pump');
-      const link = encodeURIComponent(url);
-      const u = `https://x.com/intent/tweet?text=${text}&url=${link}`;
-      window.open(u, '_blank', 'noopener,noreferrer');
-      success('webshare');
-    }
+    // 直接跳转到发布推文页面，不包含 localhost 链接
+    const text = encodeURIComponent('💊 Take the Pill. Make them Cope. 🚀\n\n🔥 Trolls getting MASSIVE & MULTIPLYING!\n💊 PUMP LABORATORY: Watch viral spread\n🎭 MBTI MEME GENERATOR: Create your personality\n\nJoin the TROLL REVOLUTION! @troll_pump');
+    const u = `https://x.com/intent/tweet?text=${text}`;
+    window.open(u, '_blank', 'noopener,noreferrer');
+    success('webshare');
   };
 
   const x = () => {
