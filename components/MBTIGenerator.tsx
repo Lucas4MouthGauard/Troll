@@ -124,21 +124,42 @@ export function MBTIGenerator() {
       ctx.fillStyle = mbtiConfig.textColor;
       ctx.fillText(mbtiText, canvas.width / 2, canvas.height * 0.85);
 
-      // 如果有自定义文本，作为半透明水印绘制在左上角
+      // 如果有自定义文本，作为半透明水印绘制在6个随机位置
       if (customText) {
-        ctx.font = 'bold 24px Impact, Arial Black, sans-serif';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'top';
+        ctx.font = 'bold 20px Impact, Arial Black, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
         
         // 半透明效果
-        ctx.globalAlpha = 0.3;
+        ctx.globalAlpha = 0.25;
         
-        ctx.strokeStyle = '#000';
-        ctx.lineWidth = 3;
-        ctx.strokeText(customText, 20, 20);
+        // 6个随机位置
+        const positions = [
+          { x: 100, y: 80 },
+          { x: 400, y: 120 },
+          { x: 150, y: 300 },
+          { x: 350, y: 250 },
+          { x: 80, y: 400 },
+          { x: 420, y: 380 }
+        ];
         
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillText(customText, 20, 20);
+        // 为每个位置绘制45度角的水印
+        positions.forEach((pos) => {
+          ctx.save(); // 保存当前状态
+          
+          // 移动到位置并旋转45度
+          ctx.translate(pos.x, pos.y);
+          ctx.rotate(-Math.PI / 4); // 45度角
+          
+          ctx.strokeStyle = '#000';
+          ctx.lineWidth = 2;
+          ctx.strokeText(customText, 0, 0);
+          
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillText(customText, 0, 0);
+          
+          ctx.restore(); // 恢复状态
+        });
         
         // 恢复透明度
         ctx.globalAlpha = 1.0;
