@@ -18,16 +18,19 @@ export function ShareButtons({ onSuccess }: { onSuccess: () => void }) {
         success('webshare');
       } catch {}
     } else {
-      await copy();
+      // 如果没有原生分享，跳转到发布推文页面
+      const text = encodeURIComponent('💊 Take the Pill. Make them Cope. 🚀\n\n🔥 Trolls getting MASSIVE & MULTIPLYING!\n💊 PUMP LABORATORY: Watch viral spread\n🎭 MBTI MEME GENERATOR: Create your personality\n\nJoin the TROLL REVOLUTION! @troll_pump');
+      const link = encodeURIComponent(url);
+      const u = `https://x.com/intent/tweet?text=${text}&url=${link}`;
+      window.open(u, '_blank', 'noopener,noreferrer');
+      success('webshare');
     }
   };
 
   const x = () => {
     track('share_clicked', { placement: 'hero', platform: 'x' });
-    const text = encodeURIComponent('💊 Take the Pill. Make them Cope. 🚀\n\n🔥 Trolls getting MASSIVE & MULTIPLYING!\n💊 PUMP LABORATORY: Watch viral spread\n🎭 MBTI MEME GENERATOR: Create your personality\n\nJoin the TROLL REVOLUTION! @troll_pump');
-    const link = encodeURIComponent(url);
-    const u = `https://x.com/intent/tweet?text=${text}&url=${link}`;
-    window.open(u, '_blank', 'noopener,noreferrer');
+    // X 按钮跳转到 @troll_pump 主页
+    window.open('https://x.com/troll_pump', '_blank', 'noopener,noreferrer');
     success('x');
   };
 
