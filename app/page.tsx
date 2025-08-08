@@ -149,21 +149,6 @@ export default function Page() {
                     0x1234...5678
                   </button>
                 </div>
-                
-                <div className="flex justify-between items-center p-3 bg-yellow-100 rounded-lg border-2 border-black">
-                  <span className="font-bold text-black">Network:</span>
-                  <span className="font-bold text-black">Ethereum</span>
-                </div>
-                
-                <div className="flex justify-between items-center p-3 bg-yellow-100 rounded-lg border-2 border-black">
-                  <span className="font-bold text-black">Supply:</span>
-                  <span className="font-bold text-black">1,000,000,000</span>
-                </div>
-                
-                <div className="flex justify-between items-center p-3 bg-yellow-100 rounded-lg border-2 border-black">
-                  <span className="font-bold text-black">Status:</span>
-                  <span className="font-bold text-green-600">🚀 LIVE & PUMPING</span>
-                </div>
               </div>
             </div>
 
@@ -204,7 +189,7 @@ export default function Page() {
                     alt="Troll" 
                     width={40} 
                     height={40}
-                    className="mr-3 group-hover:animate-bounce transition-transform duration-300"
+                    className="mr-3 animate-bounce"
                   />
                   <span className="text-black">BUY $TROLLPUMP NOW</span>
                 </div>
