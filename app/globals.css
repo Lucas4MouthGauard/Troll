@@ -62,6 +62,22 @@
 @keyframes pop { from{transform:scale(.9);opacity:0} to{transform:scale(1);opacity:1} }
 .pop-in { animation: pop .12s ease-out; }
 
+/* Troll 掉落动画 */
+@keyframes troll-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0.8;
+  }
+}
+
+.troll-fall {
+  animation: troll-fall linear infinite;
+}
+
 /* 模板卡片 */
 .template-card{
   border:3px solid #000;border-radius:14px;padding:8px;background:#fff;

@@ -11,6 +11,7 @@ interface Troll {
   rotation: number;
   delay: number;
   generation: number; // 第几代
+  isFullScreen?: boolean; // 是否全屏显示
 }
 
 export function TrollReplicator() {
@@ -28,19 +29,28 @@ export function TrollReplicator() {
     const newCount = Math.pow(2, capsuleCount + 1);
     const currentCount = trolls.length;
     const generation = capsuleCount + 1;
+    const isFullScreen = generation >= 8; // 第8次开始全屏显示
     
     // 创建新的 Troll - 每一代都更大
     const newTrolls: Troll[] = [];
     for (let i = currentCount; i < newCount; i++) {
       const baseScale = 1.0 + (generation * 0.3); // 每一代增加30%大小
+      
+      // 如果是全屏模式，位置范围扩大到整个视窗
+      const xRange = isFullScreen ? 100 : 80;
+      const yRange = isFullScreen ? 100 : 80;
+      const xOffset = isFullScreen ? 0 : 10;
+      const yOffset = isFullScreen ? 0 : 10;
+      
       newTrolls.push({
         id: `troll-${Date.now()}-${i}`,
-        x: Math.random() * 80 + 10, // 10-90%
-        y: Math.random() * 80 + 10, // 10-90%
+        x: Math.random() * xRange + xOffset, // 全屏时 0-100%，否则 10-90%
+        y: Math.random() * yRange + yOffset, // 全屏时 0-100%，否则 10-90%
         scale: baseScale + Math.random() * 0.4, // 基础大小 + 随机变化
         rotation: Math.random() * 360,
         delay: Math.random() * 500,
         generation: generation,
+        isFullScreen: isFullScreen,
       });
     }
     
@@ -102,12 +112,15 @@ export function TrollReplicator() {
         {trolls.map((troll) => (
           <div
             key={troll.id}
-            className="absolute animate-pop-in"
+            className={`absolute animate-pop-in ${troll.isFullScreen ? 'z-50' : ''}`}
             style={{
               left: `${troll.x}%`,
               top: `${troll.y}%`,
               transform: `scale(${troll.scale}) rotate(${troll.rotation}deg)`,
               animationDelay: `${troll.delay}ms`,
+              // 全屏模式时使用固定定位
+              position: troll.isFullScreen ? 'fixed' : 'absolute',
+              zIndex: troll.isFullScreen ? 9999 : 'auto',
             }}
           >
             <Image 
@@ -148,6 +161,11 @@ export function TrollReplicator() {
             <div className="text-lg text-black animate-bounce">
               GETTING MASSIVE!
             </div>
+            {capsuleCount >= 7 && (
+              <div className="text-sm text-red-600 animate-pulse mt-2">
+                🚨 BREAKING CONTAINMENT!
+              </div>
+            )}
           </div>
         </div>
       )}

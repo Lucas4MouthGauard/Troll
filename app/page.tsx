@@ -11,6 +11,7 @@ import { ShareButtons } from '@/components/ShareButtons';
 import { chooseVariant, getCopy } from '@/lib/ab';
 import { track } from '@/lib/analytics';
 import { TrollReplicator } from '@/components/TrollReplicator';
+import { TrollRain } from '@/components/TrollRain';
 
 const MBTIGenerator = dynamic(() => import('@/components/MBTIGenerator').then(m => m.MBTIGenerator), {
   ssr: false,
@@ -37,6 +38,7 @@ export default function Page() {
   const minted = useMintedCounter(3000);
   const { intervalMs, onShareSuccess } = useSpeedBoost(900);
   const [toast, setToast] = useState<string | null>(null);
+  const [isTrollRaining, setIsTrollRaining] = useState(false);
   const variant = chooseVariant();
   const copy = getCopy(variant);
 
@@ -53,9 +55,14 @@ export default function Page() {
   const doseX2 = useCallback(() => {
     track('cta_click', { variant, cta: 'dose_x2' });
     onShareSuccess();
+    setIsTrollRaining(true);
     setToast('SHARED. SPEED BOOST ×2 (30s)');
     setTimeout(() => setToast(null), 2500);
   }, [onShareSuccess, variant]);
+
+  const handleTrollRainComplete = useCallback(() => {
+    setIsTrollRaining(false);
+  }, []);
 
   return (
     <main>
@@ -118,6 +125,9 @@ export default function Page() {
       </section>
 
       <FloatingDoseButton doseX2={doseX2} />
+
+      {/* Troll 雨效果 */}
+      <TrollRain isActive={isTrollRaining} onComplete={handleTrollRainComplete} />
 
       {toast && (
         <div aria-live="polite" className="fixed left-1/2 -translate-x-1/2 bottom-6 z-50 rounded-xl bg-black text-white px-5 py-3 font-black border-4 border-black shadow-[0_8px_0_#111]">
