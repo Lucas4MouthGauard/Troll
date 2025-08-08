@@ -12,9 +12,10 @@ export function ShareButtons({ onSuccess }: { onSuccess: () => void }) {
 
   const shareNative = async () => {
     track('share_clicked', { placement: 'hero', platform: 'webshare' });
-    // 直接跳转到发布推文页面，不包含 localhost 链接
-    const text = encodeURIComponent('💊 Take the Pill. Make them Cope. 🚀\n\n🔥 Trolls getting MASSIVE & MULTIPLYING!\n💊 PUMP LABORATORY: Watch viral spread\n🎭 MBTI MEME GENERATOR: Create your personality\n\nJoin the TROLL REVOLUTION! @troll_pump');
-    const u = `https://x.com/intent/tweet?text=${text}`;
+    // 直接跳转到发布推文页面，包含视频素材
+    const text = encodeURIComponent('Take the pill pump💊,  Don\'t blink @troll_pump \n\nFrom 1 to full screen. 1→2→4→8…\n\n🎮www.trollpump.com');
+    const videoUrl = encodeURIComponent('https://troll-pump.vercel.app/images/daofang.mov');
+    const u = `https://x.com/intent/tweet?text=${text}&url=${videoUrl}`;
     window.open(u, '_blank', 'noopener,noreferrer');
     success('webshare');
   };
