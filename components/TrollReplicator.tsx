@@ -24,12 +24,13 @@ export function TrollReplicator() {
     if (isEating) return;
     
     setIsEating(true);
-    setCapsuleCount(prev => prev + 1);
+    const nextCount = capsuleCount + 1;
+    setCapsuleCount(nextCount);
     
     // 计算新的 Troll 数量（指数增长）
-    const newCount = Math.pow(2, capsuleCount + 1);
+    const newCount = Math.pow(2, nextCount);
     const currentCount = trolls.length;
-    const generation = capsuleCount + 1;
+    const generation = nextCount;
     const isFullScreen = generation >= 8; // 第8次开始全屏显示
     
     // 创建新的 Troll - 每一代都更大
@@ -62,6 +63,15 @@ export function TrollReplicator() {
         setTimeout(() => {
           setFullScreenTrolls(prev => prev.filter(t => t.id !== newTroll.id));
         }, 3000); // 3秒后消失
+        
+        // 第8次后，3秒后重置所有状态，重新开始
+        if (generation === 8) {
+          setTimeout(() => {
+            setTrolls([]);
+            setCapsuleCount(0);
+            setFullScreenTrolls([]);
+          }, 3000);
+        }
       }
     }
     

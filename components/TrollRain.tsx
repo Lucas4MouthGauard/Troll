@@ -39,7 +39,7 @@ export function TrollRain({ isActive, onComplete }: TrollRainProps) {
         rotation: Math.random() * 720 - 360, // -360 到 360 度旋转
         scale: 1.5 + Math.random() * 2.5, // 1.5 到 4.0 倍大小（更大）
         speed: 2 + Math.random() * 4, // 2-6 的掉落速度
-        delay: Math.random() * 2000, // 0-2秒的延迟
+                    delay: 0, // 移除延迟，立即开始掉落 // 0-2秒的延迟
       });
     }
 
