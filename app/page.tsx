@@ -123,89 +123,74 @@ export default function Page() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white rounded-2xl border-4 border-black shadow-[0_12px_0_#111] p-8">
-              <div className="flex items-center mb-6">
+          <div className="bg-white rounded-2xl border-4 border-black shadow-[0_12px_0_#111] p-8 mb-12">
+            <div className="flex items-center mb-6">
+              <Image 
+                src="/images/trolltouming.png" 
+                alt="TrollPump Token" 
+                width={60} 
+                height={60}
+                className="rounded-full border-2 border-black"
+              />
+              <div className="ml-4">
+                <h3 className="text-2xl font-black text-black">$TROLLPUMP</h3>
+                <p className="text-gray-600">Troll Revolution Token</p>
+              </div>
+            </div>
+            
+            <div className="space-y-4 mb-8">
+              <div className="flex justify-between items-center p-3 bg-yellow-100 rounded-lg border-2 border-black">
+                <span className="font-bold text-black">Contract Address:</span>
+                <button 
+                  onClick={() => navigator.clipboard.writeText('0x1234567890abcdef1234567890abcdef12345678')}
+                  className="font-mono text-sm bg-black text-white px-3 py-1 rounded-lg hover:bg-gray-800 transition-colors"
+                >
+                  0x1234...5678
+                </button>
+              </div>
+            </div>
+
+            <div className="text-center mb-8">
+              <h3 className="text-3xl font-black text-black mb-4">💊 BUY $TROLLPUMP</h3>
+              <p className="text-lg text-gray-700 mb-6">
+                Join the TROLL REVOLUTION and watch your investment multiply!
+              </p>
+              
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center justify-center">
+                  <span className="text-2xl mr-3">🔥</span>
+                  <span className="font-bold text-black">Viral Marketing Campaign</span>
+                </div>
+                <div className="flex items-center justify-center">
+                  <span className="text-2xl mr-3">💊</span>
+                  <span className="font-bold text-black">PUMP LABORATORY Integration</span>
+                </div>
+                <div className="flex items-center justify-center">
+                  <span className="text-2xl mr-3">🎭</span>
+                  <span className="font-bold text-black">MBTI Meme Generator Access</span>
+                </div>
+                <div className="flex items-center justify-center">
+                  <span className="text-2xl mr-3">🚀</span>
+                  <span className="font-bold text-black">Exponential Growth Potential</span>
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => window.open('https://dexscreener.com/ethereum/0x1234567890abcdef1234567890abcdef12345678', '_blank')}
+              className="relative group w-full py-6 px-8 rounded-xl font-black text-xl border-4 border-black shadow-[0_8px_0_#111] bg-yellow-300 hover:bg-yellow-400 transition-all duration-300 active:translate-y-1"
+            >
+              <div className="flex items-center justify-center">
                 <Image 
                   src="/images/trolltouming.png" 
-                  alt="TrollPump Token" 
-                  width={60} 
-                  height={60}
-                  className="rounded-full border-2 border-black"
+                  alt="Troll" 
+                  width={40} 
+                  height={40}
+                  className="mr-3 animate-bounce"
                 />
-                <div className="ml-4">
-                  <h3 className="text-2xl font-black text-black">$TROLLPUMP</h3>
-                  <p className="text-gray-600">Troll Revolution Token</p>
-                </div>
+                <span className="text-black">BUY $TROLLPUMP NOW</span>
               </div>
-              
-              <div className="space-y-4">
-                <div className="flex justify-between items-center p-3 bg-yellow-100 rounded-lg border-2 border-black">
-                  <span className="font-bold text-black">Contract Address:</span>
-                  <button 
-                    onClick={() => navigator.clipboard.writeText('0x1234567890abcdef1234567890abcdef12345678')}
-                    className="font-mono text-sm bg-black text-white px-3 py-1 rounded-lg hover:bg-gray-800 transition-colors"
-                  >
-                    0x1234...5678
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl border-4 border-black shadow-[0_12px_0_#111] p-8 flex flex-col justify-center">
-              <div className="text-center mb-8">
-                <h3 className="text-3xl font-black text-black mb-4">💊 BUY $TROLLPUMP</h3>
-                <p className="text-lg text-gray-700 mb-6">
-                  Join the TROLL REVOLUTION and watch your investment multiply!
-                </p>
-                
-                <div className="space-y-3 mb-8">
-                  <div className="flex items-center justify-center">
-                    <span className="text-2xl mr-3">🔥</span>
-                    <span className="font-bold text-black">Viral Marketing Campaign</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <span className="text-2xl mr-3">💊</span>
-                    <span className="font-bold text-black">PUMP LABORATORY Integration</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <span className="text-2xl mr-3">🎭</span>
-                    <span className="font-bold text-black">MBTI Meme Generator Access</span>
-                  </div>
-                  <div className="flex items-center justify-center">
-                    <span className="text-2xl mr-3">🚀</span>
-                    <span className="font-bold text-black">Exponential Growth Potential</span>
-                  </div>
-                </div>
-              </div>
-
-              <button
-                onClick={() => window.open('https://dexscreener.com/ethereum/0x1234567890abcdef1234567890abcdef12345678', '_blank')}
-                className="relative group w-full py-6 px-8 rounded-xl font-black text-xl border-4 border-black shadow-[0_8px_0_#111] bg-yellow-300 hover:bg-yellow-400 transition-all duration-300 active:translate-y-1"
-              >
-                <div className="flex items-center justify-center">
-                  <Image 
-                    src="/images/trolltouming.png" 
-                    alt="Troll" 
-                    width={40} 
-                    height={40}
-                    className="mr-3 animate-bounce"
-                  />
-                  <span className="text-black">BUY $TROLLPUMP NOW</span>
-                </div>
-              </button>
-
-              <div className="mt-6 text-center">
-                <p className="text-sm text-gray-600 mb-2">
-                  Available on major DEXs
-                </p>
-                <div className="flex justify-center space-x-4 text-xs">
-                  <span className="bg-gray-200 px-2 py-1 rounded">Uniswap</span>
-                  <span className="bg-gray-200 px-2 py-1 rounded">PancakeSwap</span>
-                  <span className="bg-gray-200 px-2 py-1 rounded">1inch</span>
-                </div>
-              </div>
-            </div>
+            </button>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
