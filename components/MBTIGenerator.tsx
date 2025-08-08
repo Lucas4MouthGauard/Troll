@@ -56,7 +56,7 @@ const MBTI_STEPS = [
   }
 ];
 
-export function MBTIGenerator() {
+function MBTIGenerator() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [mbtiResult, setMbtiResult] = useState('');
@@ -295,4 +295,6 @@ export function MBTIGenerator() {
       </div>
     </div>
   );
-} 
+}
+
+export default MBTIGenerator;

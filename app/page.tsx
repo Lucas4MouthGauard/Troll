@@ -13,7 +13,7 @@ import { track } from '@/lib/analytics';
 import { TrollReplicator } from '@/components/TrollReplicator';
 import { TrollRain } from '@/components/TrollRain';
 
-const MBTIGenerator = dynamic(() => import('@/components/MBTIGenerator').then(m => m.MBTIGenerator), {
+const MBTIGenerator = dynamic(() => import('@/components/MBTIGenerator'), {
   ssr: false,
   loading: () => <div className="mt-10 h-64 grid place-items-center text-sm">Loading MBTI generator…</div>,
 });
