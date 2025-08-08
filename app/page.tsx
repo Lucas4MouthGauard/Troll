@@ -87,17 +87,19 @@ export default function Page() {
           <div className="mt-6 md:mt-8 text-sm text-black" style={{ textShadow: 'none' }}>
             🎯 Trolls pumped today: {minted} • 🏆 Top pumpers: 🇺🇸 🇨🇳 🇯🇵
           </div>
-                                <div className="absolute right-4 bottom-4 md:right-8 md:bottom-8">
-                        <video 
-                          src="/images/daofang.mov" 
-                          autoPlay 
-                          loop 
-                          muted 
-                          playsInline
-                          className="sticker w-[140px] h-[140px] object-cover rounded-lg"
-                          style={{ filter: 'contrast(1.05) saturate(1.1)' }}
-                        />
-                      </div>
+          
+          {/* Hero 视频 */}
+          <div className="absolute right-4 bottom-4 md:right-8 md:bottom-8">
+            <video 
+              src="/images/daofang.mov" 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              className="sticker w-[140px] h-[140px] object-cover rounded-lg"
+              style={{ filter: 'contrast(1.05) saturate(1.1)' }}
+            />
+          </div>
         </div>
       </section>
 
