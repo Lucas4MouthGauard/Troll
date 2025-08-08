@@ -29,7 +29,7 @@ export function TrollRain({ isActive, onComplete }: TrollRainProps) {
 
     // 创建掉落的 Troll
     const newTrolls: FallingTroll[] = [];
-    const trollCount = 50; // 掉落50个 Troll
+    const trollCount = 100; // 增加到100个 Troll
 
     for (let i = 0; i < trollCount; i++) {
       newTrolls.push({
@@ -37,7 +37,7 @@ export function TrollRain({ isActive, onComplete }: TrollRainProps) {
         x: Math.random() * 100, // 0-100% 水平位置
         y: -20 - Math.random() * 50, // 从屏幕上方开始
         rotation: Math.random() * 720 - 360, // -360 到 360 度旋转
-        scale: 0.5 + Math.random() * 1.5, // 0.5 到 2.0 倍大小
+        scale: 1.0 + Math.random() * 2.0, // 1.0 到 3.0 倍大小（更大）
         speed: 2 + Math.random() * 4, // 2-6 的掉落速度
         delay: Math.random() * 2000, // 0-2秒的延迟
       });
@@ -81,19 +81,7 @@ export function TrollRain({ isActive, onComplete }: TrollRainProps) {
       ))}
       
       {/* 背景遮罩 */}
-      <div className="absolute inset-0 bg-black bg-opacity-20" />
-      
-      {/* 中心提示 */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="text-center">
-          <div className="text-6xl font-bold text-white animate-pulse mb-4">
-            💊 DOSE ×2 ACTIVATED!
-          </div>
-          <div className="text-2xl text-white animate-bounce">
-            TROLLS RAINING FROM THE SKY!
-          </div>
-        </div>
-      </div>
+      <div className="absolute inset-0 bg-black bg-opacity-10" />
     </div>
   );
 } 

@@ -18,6 +18,7 @@ export function TrollReplicator() {
   const [trolls, setTrolls] = useState<Troll[]>([]);
   const [capsuleCount, setCapsuleCount] = useState(0);
   const [isEating, setIsEating] = useState(false);
+  const [fullScreenTrolls, setFullScreenTrolls] = useState<Troll[]>([]);
 
   const eatCapsule = useCallback(() => {
     if (isEating) return;
@@ -42,7 +43,7 @@ export function TrollReplicator() {
       const xOffset = isFullScreen ? 0 : 10;
       const yOffset = isFullScreen ? 0 : 10;
       
-      newTrolls.push({
+      const newTroll = {
         id: `troll-${Date.now()}-${i}`,
         x: Math.random() * xRange + xOffset, // 全屏时 0-100%，否则 10-90%
         y: Math.random() * yRange + yOffset, // 全屏时 0-100%，否则 10-90%
@@ -51,7 +52,17 @@ export function TrollReplicator() {
         delay: Math.random() * 500,
         generation: generation,
         isFullScreen: isFullScreen,
-      });
+      };
+      
+      newTrolls.push(newTroll);
+      
+      // 如果是全屏模式，添加到全屏 Troll 列表，5秒后消失
+      if (isFullScreen) {
+        setFullScreenTrolls(prev => [...prev, newTroll]);
+        setTimeout(() => {
+          setFullScreenTrolls(prev => prev.filter(t => t.id !== newTroll.id));
+        }, 5000); // 5秒后消失
+      }
     }
     
     setTrolls(prev => [...prev, ...newTrolls]);
@@ -139,6 +150,38 @@ export function TrollReplicator() {
           </div>
         ))}
       </div>
+
+      {/* 全屏 Troll 容器 */}
+      {fullScreenTrolls.length > 0 && (
+        <div className="fixed inset-0 pointer-events-none z-[9999]">
+          {fullScreenTrolls.map((troll) => (
+            <div
+              key={troll.id}
+              className="absolute animate-pop-in"
+              style={{
+                left: `${troll.x}%`,
+                top: `${troll.y}%`,
+                transform: `scale(${troll.scale}) rotate(${troll.rotation}deg)`,
+                animationDelay: `${troll.delay}ms`,
+              }}
+            >
+              <Image 
+                src="/images/trolltouming.png" 
+                alt="Full Screen Troll" 
+                width={50} 
+                height={50}
+                className="sticker animate-jitter"
+              />
+              {/* 显示代数标签 */}
+              {troll.generation > 1 && (
+                <div className="absolute -top-2 -right-2 bg-red-600 text-white text-xs font-bold px-1 rounded-full">
+                  G{troll.generation}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* 提示文字 */}
       {trolls.length === 0 && (

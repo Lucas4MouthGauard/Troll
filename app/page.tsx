@@ -56,8 +56,6 @@ export default function Page() {
     track('cta_click', { variant, cta: 'dose_x2' });
     onShareSuccess();
     setIsTrollRaining(true);
-    setToast('SHARED. SPEED BOOST ×2 (30s)');
-    setTimeout(() => setToast(null), 2500);
   }, [onShareSuccess, variant]);
 
   const handleTrollRainComplete = useCallback(() => {
