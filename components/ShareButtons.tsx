@@ -24,20 +24,11 @@ export function ShareButtons({ onSuccess }: { onSuccess: () => void }) {
 
   const x = () => {
     track('share_clicked', { placement: 'hero', platform: 'x' });
-    const text = encodeURIComponent('Take the Pill. Make them Cope.');
+    const text = encodeURIComponent('💊 Take the Pill. Make them Cope. 🚀\n\n🔥 Trolls getting MASSIVE & MULTIPLYING!\n💊 PUMP LABORATORY: Watch viral spread\n🎭 MBTI MEME GENERATOR: Create your personality\n\nJoin the TROLL REVOLUTION! @troll_pump');
     const link = encodeURIComponent(url);
-    const u = `https://twitter.com/intent/tweet?text=${text}&url=${link}`;
+    const u = `https://x.com/intent/tweet?text=${text}&url=${link}`;
     window.open(u, '_blank', 'noopener,noreferrer');
     success('x');
-  };
-
-  const tg = () => {
-    track('share_clicked', { placement: 'hero', platform: 'tg' });
-    const text = encodeURIComponent('Take the Pill. Make them Cope.');
-    const link = encodeURIComponent(url);
-    const u = `https://t.me/share/url?url=${link}&text=${text}`;
-    window.open(u, '_blank', 'noopener,noreferrer');
-    success('tg');
   };
 
   const copy = async () => {
@@ -52,7 +43,6 @@ export function ShareButtons({ onSuccess }: { onSuccess: () => void }) {
     <div className="flex items-center gap-3">
       <button onClick={shareNative} className="rounded-xl bg-white px-4 py-2 font-black border-4 border-black shadow-[0_8px_0_#111] active:translate-y-1">Share</button>
       <button onClick={x} className="rounded-xl bg-white px-4 py-2 font-black border-4 border-black shadow-[0_8px_0_#111] active:translate-y-1">X</button>
-      <button onClick={tg} className="rounded-xl bg-white px-4 py-2 font-black border-4 border-black shadow-[0_8px_0_#111] active:translate-y-1">TG</button>
       <button onClick={copy} className="rounded-xl bg-white px-4 py-2 font-black border-4 border-black shadow-[0_8px_0_#111] active:translate-y-1">Copy</button>
     </div>
   );
