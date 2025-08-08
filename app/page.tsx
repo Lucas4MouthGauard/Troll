@@ -178,38 +178,19 @@ export default function Page() {
 
             <button
               onClick={() => window.open('https://dexscreener.com/ethereum/0x1234567890abcdef1234567890abcdef12345678', '_blank')}
-              className="relative group w-full py-6 px-8 rounded-xl font-black text-xl border-4 border-black shadow-[0_8px_0_#111] bg-yellow-300 hover:bg-yellow-400 transition-all duration-300 active:translate-y-1"
+              className="relative group w-full py-4 px-6 rounded-xl font-black text-lg border-4 border-black shadow-[0_8px_0_#111] bg-yellow-300 hover:bg-yellow-400 transition-all duration-300 active:translate-y-1"
             >
               <div className="flex items-center justify-center">
                 <Image 
                   src="/images/trolltouming.png" 
                   alt="Troll" 
-                  width={40} 
-                  height={40}
+                  width={32} 
+                  height={32}
                   className="mr-3 animate-bounce"
                 />
                 <span className="text-black">BUY $TROLLPUMP NOW</span>
               </div>
             </button>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white rounded-xl border-4 border-black shadow-[0_8px_0_#111] p-4 text-center">
-              <div className="text-2xl font-black text-black">$0.0001</div>
-              <div className="text-sm text-gray-600">Current Price</div>
-            </div>
-            <div className="bg-white rounded-xl border-4 border-black shadow-[0_8px_0_#111] p-4 text-center">
-              <div className="text-2xl font-black text-green-600">+420%</div>
-              <div className="text-sm text-gray-600">24h Change</div>
-            </div>
-            <div className="bg-white rounded-xl border-4 border-black shadow-[0_8px_0_#111] p-4 text-center">
-              <div className="text-2xl font-black text-black">$69K</div>
-              <div className="text-sm text-gray-600">Market Cap</div>
-            </div>
-            <div className="bg-white rounded-xl border-4 border-black shadow-[0_8px_0_#111] p-4 text-center">
-              <div className="text-2xl font-black text-black">1,337</div>
-              <div className="text-sm text-gray-600">Holders</div>
-            </div>
           </div>
         </div>
       </section>
