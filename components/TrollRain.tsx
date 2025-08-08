@@ -29,7 +29,7 @@ export function TrollRain({ isActive, onComplete }: TrollRainProps) {
 
     // 创建掉落的 Troll
     const newTrolls: FallingTroll[] = [];
-    const trollCount = 100; // 增加到100个 Troll
+    const trollCount = 150; // 增加到150个 Troll
 
     for (let i = 0; i < trollCount; i++) {
       newTrolls.push({
@@ -37,7 +37,7 @@ export function TrollRain({ isActive, onComplete }: TrollRainProps) {
         x: Math.random() * 100, // 0-100% 水平位置
         y: -20 - Math.random() * 50, // 从屏幕上方开始
         rotation: Math.random() * 720 - 360, // -360 到 360 度旋转
-        scale: 1.0 + Math.random() * 2.0, // 1.0 到 3.0 倍大小（更大）
+        scale: 1.5 + Math.random() * 2.5, // 1.5 到 4.0 倍大小（更大）
         speed: 2 + Math.random() * 4, // 2-6 的掉落速度
         delay: Math.random() * 2000, // 0-2秒的延迟
       });
@@ -73,8 +73,8 @@ export function TrollRain({ isActive, onComplete }: TrollRainProps) {
           <Image 
             src="/images/trolltouming.png" 
             alt="Falling Troll" 
-            width={60} 
-            height={60}
+            width={80} 
+            height={80}
             className="sticker"
           />
         </div>

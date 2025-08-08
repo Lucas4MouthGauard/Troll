@@ -56,12 +56,12 @@ export function TrollReplicator() {
       
       newTrolls.push(newTroll);
       
-      // 如果是全屏模式，添加到全屏 Troll 列表，5秒后消失
+      // 如果是全屏模式，添加到全屏 Troll 列表，3秒后消失
       if (isFullScreen) {
         setFullScreenTrolls(prev => [...prev, newTroll]);
         setTimeout(() => {
           setFullScreenTrolls(prev => prev.filter(t => t.id !== newTroll.id));
-        }, 5000); // 5秒后消失
+        }, 3000); // 3秒后消失
       }
     }
     
@@ -120,18 +120,15 @@ export function TrollReplicator() {
 
       {/* Troll 容器 */}
       <div className="relative w-full h-full">
-        {trolls.map((troll) => (
+        {trolls.filter(troll => !troll.isFullScreen).map((troll) => (
           <div
             key={troll.id}
-            className={`absolute animate-pop-in ${troll.isFullScreen ? 'z-50' : ''}`}
+            className="absolute animate-pop-in"
             style={{
               left: `${troll.x}%`,
               top: `${troll.y}%`,
               transform: `scale(${troll.scale}) rotate(${troll.rotation}deg)`,
               animationDelay: `${troll.delay}ms`,
-              // 全屏模式时使用固定定位
-              position: troll.isFullScreen ? 'fixed' : 'absolute',
-              zIndex: troll.isFullScreen ? 9999 : 'auto',
             }}
           >
             <Image 
@@ -154,6 +151,10 @@ export function TrollReplicator() {
       {/* 全屏 Troll 容器 */}
       {fullScreenTrolls.length > 0 && (
         <div className="fixed inset-0 pointer-events-none z-[9999]">
+          {/* 调试信息 */}
+          <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-2 rounded-lg font-bold text-sm">
+            🚨 FULL SCREEN: {fullScreenTrolls.length} trolls
+          </div>
           {fullScreenTrolls.map((troll) => (
             <div
               key={troll.id}
