@@ -175,7 +175,6 @@ export default function Page() {
             </div>
 
             <button
-              onClick={() => window.open('https://dexscreener.com/ethereum/0xc84118a2f4eecd2175f5c8cb1870e73e9e184444', '_blank')}
               className="relative group w-full py-4 px-6 rounded-xl font-black text-lg border-4 border-black shadow-[0_8px_0_#111] bg-yellow-300 hover:bg-yellow-400 transition-all duration-300 active:translate-y-1 pixel-text pixel-button"
             >
               <div className="flex items-center justify-center">
