@@ -107,7 +107,7 @@ function MBTIGenerator() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     const img = new window.Image();
-    img.src = '/images/trolltouming.png';
+    img.src = '/images/btroll.jpg';
     img.onload = () => {
       ctx.drawImage(img, 0, 0, imgSize, imgSize);
 
@@ -209,19 +209,19 @@ function MBTIGenerator() {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="text-center mb-8">
-        <h2 className="text-4xl font-bold text-black mb-4">🎭 MBTI MEME GENERATOR</h2>
+        <h2 className="text-4xl font-bold text-black mb-4">MBTI Test</h2>
         <p className="text-lg text-gray-700">Discover your personality type & create unique memes</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="space-y-4">
-          <div className="relative bg-white border-4 border-black rounded-2xl shadow-[0_8px_0_#111] overflow-hidden min-h-96">
+          <div className="relative bg-white border-4 border-black rounded-2xl shadow-[0_8px_0_#111] overflow-hidden min-h-96 pixel-border">
             {showPill ? (
               <div className="absolute inset-0 flex items-center justify-center">
                 <button onClick={startMBTI} className="group transition-all duration-300 hover:scale-110">
-                  <Image src="/images/touming.svg" alt="Start MBTI" width={80} height={80} className="animate-bounce" />
+                  <Image src="/images/btroll.jpg" alt="Start MBTI" width={80} height={80} className="animate-bounce rounded-lg pixel-image" />
                   <div className="text-center mt-4">
-                    <div className="text-xl font-bold text-black">💊 CLICK TO START</div>
+                    <div className="text-xl font-bold text-black">CLICK TO START</div>
                     <div className="text-sm text-gray-600">Discover your MBTI type</div>
                   </div>
                 </button>
@@ -254,7 +254,7 @@ function MBTIGenerator() {
           </div>
           
           {mbtiResult && (
-            <button onClick={handleExport} disabled={isExporting} className="w-full bg-black text-white py-4 px-6 font-bold text-lg border-4 border-black shadow-[0_8px_0_#111] active:translate-y-1 transition-transform disabled:opacity-50">
+            <button onClick={handleExport} disabled={isExporting} className="w-full bg-black text-white py-4 px-6 font-bold text-lg border-4 border-black shadow-[0_8px_0_#111] active:translate-y-1 transition-transform disabled:opacity-50 pixel-text pixel-button">
               {isExporting ? 'EXPORTING...' : '🚀 EXPORT MBTI MEME'}
             </button>
           )}
@@ -263,8 +263,8 @@ function MBTIGenerator() {
         <div className="space-y-6">
           {mbtiResult ? (
             <>
-              <div className="bg-white border-4 border-black rounded-xl p-6">
-                <h3 className="text-2xl font-bold text-black mb-4">🎯 YOUR MBTI TYPE</h3>
+              <div className="bg-white border-4 border-black rounded-xl p-6 pixel-border">
+                <h3 className="text-2xl font-bold text-black mb-4">YOUR MBTI TYPE</h3>
                 <div className="text-4xl font-bold p-4 rounded-lg mb-4" style={{ backgroundColor: MBTI_TYPES[mbtiResult as keyof typeof MBTI_TYPES]?.color, color: MBTI_TYPES[mbtiResult as keyof typeof MBTI_TYPES]?.textColor }}>
                   {mbtiResult}
                 </div>
@@ -273,16 +273,16 @@ function MBTIGenerator() {
 
               <div>
                 <h3 className="text-xl font-bold mb-3">✍️ CUSTOM TEXT</h3>
-                <input type="text" value={customText} onChange={(e) => setCustomText(e.target.value)} placeholder="Enter custom text..." className="w-full p-3 border-2 border-black rounded-lg font-bold text-center" maxLength={50} />
+                <input type="text" value={customText} onChange={(e) => setCustomText(e.target.value)} placeholder="Enter custom text..." className="w-full p-3 border-2 border-black rounded-lg font-bold text-center pixel-input" maxLength={50} />
               </div>
 
-              <button onClick={resetMBTI} className="w-full py-3 px-6 font-bold border-4 border-black rounded-lg bg-white hover:bg-gray-100 transition-all">
+              <button onClick={resetMBTI} className="w-full py-3 px-6 font-bold border-4 border-black rounded-lg bg-white hover:bg-gray-100 transition-all pixel-text pixel-button">
                 🔄 RESTART MBTI TEST
               </button>
             </>
           ) : (
             <div className="bg-white border-4 border-black rounded-xl p-6">
-              <h3 className="text-xl font-bold text-black mb-4">💊 MBTI PERSONALITY TEST</h3>
+              <h3 className="text-xl font-bold text-black mb-4">MBTI PERSONALITY TEST</h3>
               <p className="text-gray-700 mb-4">Click the pill to start your MBTI personality test. Answer 4 questions to discover your unique personality type.</p>
               <div className="text-sm text-gray-600">
                 • 16 different personality types<br/>

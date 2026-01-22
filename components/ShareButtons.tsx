@@ -13,7 +13,7 @@ export function ShareButtons({ onSuccess }: { onSuccess: () => void }) {
   const shareNative = async () => {
     track('share_clicked', { placement: 'hero', platform: 'webshare' });
     // 直接跳转到发布推文页面，不包含 localhost 链接
-    const text = encodeURIComponent('Take the pill pump💊,  Don\'t blink @troll_pump \n\nFrom 1 to full screen. 1→2→4→8…');
+    const text = encodeURIComponent('A $BTroll wearing a BXXXXXX hat,  Don\'t blink @BTroll_bsc\n\nFrom 1 to full screen. 1→2→4→8…');
     const u = `https://x.com/intent/tweet?text=${text}`;
     window.open(u, '_blank', 'noopener,noreferrer');
     success('webshare');
@@ -21,8 +21,8 @@ export function ShareButtons({ onSuccess }: { onSuccess: () => void }) {
 
   const x = () => {
     track('share_clicked', { placement: 'hero', platform: 'x' });
-    // X 按钮跳转到 @troll_pump 主页
-    window.open('https://x.com/troll_pump', '_blank', 'noopener,noreferrer');
+    // X 按钮跳转到 @BTroll_bsc 主页
+    window.open('https://x.com/BTroll_bsc', '_blank', 'noopener,noreferrer');
     success('x');
   };
 

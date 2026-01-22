@@ -96,3 +96,72 @@
   .jitter { animation: none !important; }
   .pop-in { animation: none !important; }
 }
+
+/* 像素风格 */
+@font-face {
+  font-family: 'Pixel';
+  src: url('data:font/truetype;charset=utf-8;base64,') format('truetype');
+  font-display: swap;
+}
+
+/* 像素化字体 */
+.pixel-text {
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  text-rendering: optimizeSpeed;
+  font-smooth: never;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+}
+
+/* 像素边框效果 */
+.pixel-border {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* 像素化图片 */
+.pixel-image {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/* 像素化背景 */
+.pixel-bg {
+  background-image: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+  background-size: 4px 4px;
+}
+
+/* 像素化按钮效果 */
+.pixel-button {
+  position: relative;
+  transition: all 0.1s;
+}
+
+.pixel-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #111;
+}
+
+/* 像素化输入框 */
+.pixel-input {
+  font-family: 'Courier New', 'Monaco', 'Menlo', monospace;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* 整体页面像素化效果 */
+body {
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}

@@ -5,8 +5,8 @@ import { siteUrl } from '@/lib/config';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'troll — Take the Pill. Make a Meme.',
-    template: '%s — troll',
+    default: 'A troll wearing a hat',
+    template: '%s — A troll wearing a hat',
   },
   description:
     'troll is a troll+pill meme generator. Flat yellow, thick outline, instant exports. Take the pill, make them cope.',
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     url: '/',
   },
   icons: {
-    icon: '/images/Troll.png',
-    shortcut: '/images/Troll.png',
-    apple: '/images/Troll.png',
+    icon: '/images/btroll.jpg',
+    shortcut: '/images/btroll.jpg',
+    apple: '/images/btroll.jpg',
   },
 };
 
@@ -33,9 +33,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <link rel="manifest" href="/manifest.webmanifest" />
-        <link rel="icon" href="/images/Troll.png" />
-        <link rel="shortcut icon" href="/images/Troll.png" />
-        <link rel="apple-touch-icon" href="/images/Troll.png" />
+        <link rel="icon" href="/images/btroll.jpg" />
+        <link rel="shortcut icon" href="/images/btroll.jpg" />
+        <link rel="apple-touch-icon" href="/images/btroll.jpg" />
       </head>
       <body>{children}</body>
     </html>

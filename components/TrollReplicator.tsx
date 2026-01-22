@@ -82,7 +82,7 @@ export function TrollReplicator() {
   }, [trolls.length, capsuleCount, isEating]);
 
   return (
-    <div className="relative w-full h-96 bg-gradient-to-br from-yellow-200 to-yellow-400 rounded-2xl border-4 border-black shadow-[0_8px_0_#111] overflow-hidden">
+    <div className="relative w-full h-96 bg-gradient-to-br from-yellow-200 to-yellow-400 rounded-2xl border-4 border-black shadow-[0_8px_0_#111] overflow-hidden pixel-border">
       {/* 背景装饰 */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-4 left-4 w-8 h-8 bg-black rounded-full"></div>
@@ -142,7 +142,7 @@ export function TrollReplicator() {
             }}
           >
             <Image 
-              src="/images/trolltouming.png" 
+              src="/images/btroll.jpg" 
               alt="Pumped Troll" 
               width={50} 
               height={50}
@@ -177,7 +177,7 @@ export function TrollReplicator() {
               }}
             >
               <Image 
-                src="/images/trolltouming.png" 
+                src="/images/btroll.jpg" 
                 alt="Full Screen Troll" 
                 width={50} 
                 height={50}

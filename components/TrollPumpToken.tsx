@@ -94,11 +94,11 @@ export function TrollPumpToken() {
                 </div>
                 <div className="flex items-center justify-center">
                   <span className="text-2xl mr-3">💊</span>
-                  <span className="font-bold text-black">PUMP LABORATORY Integration</span>
+                  <span className="font-bold text-black">BTroll Game Integration</span>
                 </div>
                 <div className="flex items-center justify-center">
                   <span className="text-2xl mr-3">🎭</span>
-                  <span className="font-bold text-black">MBTI Meme Generator Access</span>
+                  <span className="font-bold text-black">MBTI Test Access</span>
                 </div>
                 <div className="flex items-center justify-center">
                   <span className="text-2xl mr-3">🚀</span>
