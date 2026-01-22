@@ -144,10 +144,10 @@ export default function Page() {
                               <div className="flex justify-between items-center p-3 bg-yellow-100 rounded-lg border-2 border-black">
                   <span className="font-bold text-black">Contract Address:</span>
                   <button 
-                    onClick={() => navigator.clipboard.writeText('')}
+                    onClick={() => navigator.clipboard.writeText('0xc84118a2f4eecd2175f5c8cb1870e73e9e184444')}
                     className="font-mono text-lg bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors min-w-[300px] text-center"
                   >
-                    
+                    0xc841...84444
                   </button>
                 </div>
             </div>
@@ -175,7 +175,7 @@ export default function Page() {
             </div>
 
             <button
-              onClick={() => window.open('https://dexscreener.com/ethereum/AB18b6W3JXJ5E51vMcka9bLNeXi8ej4PuLd6FNoqpump', '_blank')}
+              onClick={() => window.open('https://dexscreener.com/ethereum/0xc84118a2f4eecd2175f5c8cb1870e73e9e184444', '_blank')}
               className="relative group w-full py-4 px-6 rounded-xl font-black text-lg border-4 border-black shadow-[0_8px_0_#111] bg-yellow-300 hover:bg-yellow-400 transition-all duration-300 active:translate-y-1 pixel-text pixel-button"
             >
               <div className="flex items-center justify-center">
